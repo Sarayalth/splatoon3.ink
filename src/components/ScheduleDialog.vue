@@ -1,8 +1,8 @@
 <template>
   <ModalDialog inner-class="md:-rotate-1" no-scroll>
-    <div class="h-full w-full max-w-2xl isolate rounded-2xl overflow-hidden" :class="type.bg">
+    <div class="h-full w-full max-w-2xl isolate rounded-2xl overflow-hidden product-mask" :class="type.bg">
       <div class="relative h-full overflow-hidden">
-        <div class="absolute inset-x-0 bg-zinc-800/40 backdrop-blur-md z-30 pt-10 pb-4">
+        <div class="inset-x-0 bg-zinc-800/40 backdrop-blur-md z-30 pt-10 pb-4">
           <div class="flex items-center space-x-2 mx-2">
             <img :src="type.img" />
             <div class="font-splatoon1 lg:text-2xl xl:text-3xl text-shadow">
@@ -19,7 +19,7 @@
           <XMarkIcon class="h-6 w-6" aria-hidden="true" />
         </button>
 
-        <div class="h-full overflow-y-auto pt-24 pb-8">
+        <div class="h-full pb-6 overflow-y-auto max-h-[calc(100%-6rem)] scrollbar">
           <template v-for="{ title, schedules } in sections" :key="title">
             <div class="mt-6 mx-2 space-y-2 text-left">
               <SquidTape class="font-splatoon2 text-sm drop-shadow -rotate-6 -mx-2">
@@ -84,4 +84,22 @@ const sections = computed(() => [
     linear-gradient(180deg, rgba(2, 0, 36, 0.10) 0%, rgba(0, 0, 0, 0) 35%, rgba(0, 0, 0, 0.25) 100%);
   background-size: contain;
 }
+
+.scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+  margin-bottom: 12px;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+.scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(246, 248, 250, 0.8);
+}
+
 </style>
